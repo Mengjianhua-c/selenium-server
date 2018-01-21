@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url('api/', include('taskApi.urls')),
     url(r'api-doc/', schema_view),
-
 ]
 
 urlpatterns += [

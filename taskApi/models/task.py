@@ -28,7 +28,16 @@ class Task(models.Model):
         ordering = ('-create_time',)
 
 
-class TaskSerializers(serializers.HyperlinkedModelSerializer):
+class TaskSerializers(serializers.Serializer):
+    name = serializers.CharField()
+    status = serializers.ChoiceField(default='waiting', choices=Task.STATUS_CHOSE)
+    task_env = serializers.ChoiceField(default='test', choices=Task.ENV_CHOSE)
+    create_time = serializers.DateTimeField(read_only=True)
+    id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Task
-        fields = ('url', 'name', 'task_env', 'create_time')
+        fields = ('id', 'name', 'task_env', 'status', 'create_time')
+
+    def create(self, validated_data):
+        return Task.objects.create(**validated_data)
