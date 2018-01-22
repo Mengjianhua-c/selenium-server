@@ -26,6 +26,6 @@ urlpatterns = [
     url(r'api-doc/', schema_view),
 ]
 
-urlpatterns += [
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+# urlpatterns += [
+#     url(r'^api-auth', include('rest_framework.urls', namespace='rest_framework'))
+# ]

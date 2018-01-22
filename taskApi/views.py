@@ -8,7 +8,8 @@ from rest_framework.response import Response
 # Create your views here.
 
 class TaskList(APIView):
-    def post(self, request, format=None):
+
+    def post(self, request):
         page = request.data
         print(page)
         tasks = Task.objects.all()
